@@ -36,7 +36,7 @@ cd ~/plugin-deployment && ./_plinode_setup_bkup.sh && ./_plinode_backup.sh -full
 
 ```sh
 cd $HOME
-git clone https://github.com/11ppm/pli_pm2/blob/main/pm2process_restore.sh
+git clone https://github.com/11ppm/pli_pm2
 cd pli_pm2
 chmod +x *.sh
 ```

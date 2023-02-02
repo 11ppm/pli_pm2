@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 # 変数定義
 backup_dir="/plinode_backups" # バックアップが格納されたディレクトリ
-files=($(ls -t $backup_dir))  # バックアップファイル一覧 filesは配列
+files=($(ls -t $backup_dir))  # バックアップファイル一覧
 file_num=${#files[@]}         # バックアップファイル数
 display_num=10                # 一度に表示するバックアップファイル数
 start=0                       # 表示開始番号

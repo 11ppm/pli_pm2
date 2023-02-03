@@ -19,7 +19,7 @@ start=0                       # 表示開始番号
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
-echo -e "${YELLOW}                バックアップファイルをの一覧を表示します"
+echo -e "${YELLOW}                    Displaying list of backup files."
 echo -e "${YELLOW}"
 echo -e "${YELLOW}#########################################################################${NC}"
 echo
@@ -46,17 +46,17 @@ while true; do
     # 表示リスト頁の最終番号が全バックアップファイル数に達した時
     if [ $end -eq $((file_num - 1)) ]; then
         echo
-        echo -e " すべてのバックアップファイルが表示されました"
+        echo -e " All backup files have been displayed."
     fi
     # 次の頁&番号入力
     echo
-    echo "次のページを表示するには「n 」を入力してください。"
-    read -t30 -r -p "復元したいファイルの番号を入力してください (中止したい場合は q ) : " input
+    echo "Enter 'n' to display next page."
+    read -t30 -r -p "Enter the number of the file you want to restore. (q to cancel) : " input
     # 終了ステータス
     if [ $? -gt 128 ]; then
         echo
         echo
-        echo -e "${PURPLE}      30秒間応答がなかったため終了します${NC}"
+        echo -e "${PURPLE}      No response for 30 seconds, session will end.${NC}"
         echo
         break
     fi
@@ -71,24 +71,24 @@ while true; do
     # 変数inputに格納された値を変数file_indexとする
     file_index=$((input - 1))
     if [ $file_index -lt 0 ] || [ $file_index -ge $file_num ]; then
-        echo -e "${PURPLE} 入力された番号が無効です。正しく番号を入力してください${NC}"
+        echo -e "${PURPLE} Invalid number input. Please input a valid number.${NC}"
         echo
         continue
     fi
     file=${files[file_index]}
     # ファイル名にpm2processが含まれているか判定
     if [[ $file != *"pm2process"* ]]; then
-        echo -e "${PURPLE} 注意 : pm2processファイルを選んでください${NC}"
+        echo -e "${PURPLE} Note: choose pm2 process file.${NC}"
         echo
         continue
     fi
-    echo "以下のファイルを復元します:"
+    echo "Restoring the following file.:"
     echo $file
-    read -t30 -r -p "よろしいですか？ (Y/N) : " confirm
+    read -t30 -r -p "Are you okay with this ? (Y/N) : " confirm
     if [ $? -gt 128 ]; then
         echo
         echo
-        echo -e "${PURPLE}      30秒間応答がなかったため終了します${NC}"
+        echo -e "${PURPLE}      No response for 30 seconds, session will end.${NC}"
         echo
         break
     fi
@@ -98,7 +98,7 @@ while true; do
         echo
         echo -e "${YELLOW}#########################################################################"
         echo -e "${YELLOW}"
-        echo -e "${YELLOW}                       pm2プロセスを停止します"
+        echo -e "${YELLOW}                         Stopping pm2 process."
         echo -e "${YELLOW}"
         echo -e "${YELLOW}#########################################################################${NC}"
         echo
@@ -109,7 +109,7 @@ while true; do
         echo
         echo -e "${YELLOW}#########################################################################"
         echo -e "${YELLOW}"
-        echo -e "${YELLOW}                      PM2プロセス復元を開始します"
+        echo -e "${YELLOW}                    Starting PM2 process restoration."
         echo -e "${YELLOW}"
         echo -e "${YELLOW}#########################################################################${NC}"
         echo
@@ -119,8 +119,8 @@ while true; do
         echo
         echo -e "${YELLOW}#########################################################################"
         echo -e "${YELLOW}"
-        echo -e "${YELLOW}                     PM2プロセスの復元が完了しました"
-        echo -e "${YELLOW}                     続いてpm2サービスを再起動します" # restart pm2 service
+        echo -e "${YELLOW}             PM2 process restoration complete."
+        echo -e "${YELLOW}             Next, restart the pm2 service." # restart pm2 service
         echo -e "${YELLOW}"
         echo -e "${YELLOW}#########################################################################${NC}"
         echo
@@ -139,7 +139,7 @@ while true; do
         echo
         echo -e "${YELLOW}#########################################################################"
         echo -e "${YELLOW}"
-        echo -e "${YELLOW}                       pm2プロセスの復元に成功しました"
+        echo -e "${YELLOW}                 Successful restoration of pm2 process."
         echo -e "${YELLOW}"
         echo -e "${YELLOW}#########################################################################${NC}"
         echo
@@ -147,15 +147,15 @@ while true; do
     # fi
     elif [ "$confirm" == "N" ] || [ "$confirm" == "n" ]; then
         echo
-        echo -e "${PURPLE}      復元を中止しました${NC}"
+        echo -e "${PURPLE}      Restoration cancelled.${NC}"
         echo
         break
     else
         echo
-        echo -e "${PURPLE}      無効な入力です${NC}"
+        echo -e "${PURPLE}      Invalid input.${NC}"
         echo
-        echo -e "復元したいファイルの番号を入力してください : "
-        echo -e "次のページを表示するには「n 」を入力してください (中止したい場合は q ) :  "
+        echo -e "Enter the number of the file you want to restore. : "
+        echo -e "Enter 'n' to display next page (q to cancel) :  "
         echo
     fi
     start=$((file_index + 1))

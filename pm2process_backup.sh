@@ -30,8 +30,8 @@ BACKUP_PM2_PROCESS="${host}_$(date +%Y_%m_%d_%H_%M).pm2process.tar.gz"
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
-echo -e "${YELLOW}                   pm2プロセスのバックアップを開始します"
-echo -e "${YELLOW}                   はじめにpm2プロセスを停止します"
+echo -e "${YELLOW}                   Starting the backup of pm2 process."
+echo -e "${YELLOW}                   First, stopping the pm2 process."
 echo -e "${YELLOW}"
 echo -e "${YELLOW}#########################################################################${NC}"
 echo
@@ -44,7 +44,7 @@ pm2 -f save
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
-echo -e "${YELLOW}                   pm2プロセスのバックアップを開始します"
+echo -e "${YELLOW}                   Starting the backup of pm2 process."
 echo -e "${YELLOW}"
 echo -e "${YELLOW}#########################################################################${NC}"
 echo
@@ -54,29 +54,29 @@ tar -cvpzf "$backup_dir/$BACKUP_PM2_PROCESS" "$EXTERNAL_ADAPTOR_TEMP" "$EXTERNAL
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
-echo -e "${YELLOW}                   pm2プロセスのバックアップに成功しました"
+echo -e "${YELLOW}                   The pm2 process backup was successful."
 echo -e "${YELLOW}"
 echo -e "${YELLOW}#########################################################################${NC}"
 echo
 
 # pm2の再起動
-read -t30 -r -p "現在、pm2は停止しています。pm2を再起動しますか？ [Y/N]: " answer
+read -t30 -r -p "pm2 is currently stopped. Would you like to restart pm2 ? [Y/N]: " answer
 if [ $? -gt 128 ]; then
     echo
     echo
-    echo -e "${PURPLE}      30秒間応答がなかったため終了します${NC}"
-    echo -e "${PURPLE}      現在、pm2は停止したまま状態です${NC}"
+    echo -e "${PURPLE}      No response for 30 seconds, session will end.${NC}"
+    echo -e "${PURPLE}      pm2 remains stopped.${NC}"
     echo
 elif [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
     pm2 restart all
 elif [ "$answer" == "N" ] || [ "$answer" == "n" ]; then
-    echo "再起動したい場合は、pm2 restart allを実行してください"
+    echo "To restart, run pm2 restart all."
 elif [ "$input" == "q" ]; then
     break
 else
     echo
-    echo -e "${PURPLE}      無効な入力です${NC}"
-    echo -e "${PURPLE}      現在、pm2は停止したまま状態です${NC}"
+    echo -e "${PURPLE}      Invalid input.${NC}"
+    echo -e "${PURPLE}      pm2 remains stopped.${NC}"
     echo
 fi
 
@@ -86,13 +86,13 @@ file_num=${#files[@]}        # バックアップファイル数再取得
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
-echo -e "${YELLOW}                以下にバックアップファイルの中身を表示します"
+echo -e "${YELLOW}                Displaying contents of backup file."
 echo -e "${YELLOW}"
 echo -e "${YELLOW}#########################################################################${NC}"
 echo
 
 while true; do
-    echo "表示中のバックアップファイル："
+    echo "Displaying backup file.："
     echo
     for ((i = start; i < start + display_num && i < file_num; i++)); do
         filename=${files[i]}
@@ -112,31 +112,30 @@ while true; do
     # 全てのバックアップファイルが表示されたか判定
     if [ $((start + display_num)) -ge $file_num ]; then
         echo
-        echo -e "${YELLOW} すべてのバックアップファイルが表示されました${NC}"
+        echo -e "${YELLOW} All backup files have been displayed.${NC}"
         echo
         break
     fi
 
     echo
-    echo "表示された10個になかった場合は、キーボードのnを押してください"
-    # read -p "次の10個を表示する場合は、nを入力してください (q to quit) : " next
-    read -t30 -r -p "次の10個を表示する場合は、nを入力してください  (中止したい場合は q )  : " next
+    echo "Press 'n' on the keyboard if there are not 10 shown."
+    read -t30 -r -p "Enter 'n' to display the next 10. (q to quit)  : " next
     if [ $? -gt 128 ]; then
         echo
         echo
-        echo -e "${PURPLE}      30秒間応答がなかったため終了します${NC}"
+        echo -e "${PURPLE}      No response for 30 seconds, session will end.${NC}"
         echo
         break
     fi
     if [ "$next" == "q" ]; then
         echo
-        echo -e "${PURPLE}      このまま終了します${NC}"
+        echo -e "${PURPLE}      Ending session as is.${NC}"
         echo
         break
     elif [ "$next" != "n" ]; then
         echo
-        echo -e "${PURPLE}      n または q 以外の入力がありました${NC}"
-        echo -e "${PURPLE}      このまま終了します${NC}"
+        echo -e "${PURPLE}      Invalid input besides 'n' or 'q'.${NC}"
+        echo -e "${PURPLE}      Ending session as is.${NC}"
         echo
         break
     fi

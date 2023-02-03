@@ -1,13 +1,13 @@
 # Backup and Restore PM2 PROCESSes
 
-PluginNode内にある、以下のディレクトリとファイルをバックアップします。
+Back up the following directories and files within the PluginNode.
 
 * data-feed-setup/
 * external-adapter-feeds/
 * external-adapter-template/
 * dump.pm2
 
-上記ディレクトリとファイルは、以下の場所にあるものとする。
+The above directories and files are assumed to be located in the following location.
 
 ```
     ~/plugin-deployment/
@@ -22,7 +22,7 @@ PluginNode内にある、以下のディレクトリとファイルをバック�
 
 **Backup of conf and db**
 
-`Conf files`と`Database files`は、先にバックアップをしておくことをお勧めします。
+It is recommended to backup Conf files and Database files beforehand.
 ```sh
 cd ~/plugin-deployment && ./_plinode_setup_bkup.sh && ./_plinode_backup.sh -full
 ```
@@ -31,7 +31,7 @@ cd ~/plugin-deployment && ./_plinode_setup_bkup.sh && ./_plinode_backup.sh -full
 
 # Backup of PM2 PROCESSes
 
-## 1． githubからダウンロード
+## 1． Clone from GitHub
 
 ```sh
 cd $HOME
@@ -41,75 +41,75 @@ chmod +x *.sh
 ```
 
 
-## 2． バックアップの実行
+## 2． Perform the backup
 
 ```sh
 ./pm2process_backup.sh 
 ```
 
 
-* 上記のディレクトリとファイルを`/plinode_backups`にバックアップします
-* バックアップファイルは、ホスト名と日時も含めたファイル名になり、`pm2process.tar.gz`の形式になります
-* ノードにセットしてあるディレクトリのみバックアップします
+* Backup the above directories and files to /plinode_backups
+* The backup file will have a file name including the host name and date and time, in the format of pm2process.tar.gz
+* Only backup the directories set on the node.
 
 
-#### 2-1  pm2プロセス停止
-実行すると、はじめにpm2プロセスを停止します。
+#### 2-1  Stop pm2 process
+When executed, it will stop the pm2 process first.
 <img src="./img/backup1.png">
 
 
-#### 2-2  バックアップ開始
-次にpm2プロセスのバックアップが始まります。
+#### 2-2  Start backup
+Next, the backup of the pm2 process will start.
 <img src="./img/backup2.png">
 
 
-#### 2-3  pm2再起動
-バックアップが終わると、pm2プロセスを再起動するかどうかを尋ねられます。再起動する場合は`Y(y)`してください。再起動がはじまります。しない場合は`N(n)`を入力して終了します。
+#### 2-3  Restart pm2
+Once the backup is finished, you will be asked if you want to restart the pm2 process. If you want to restart, please enter Y(y). The restart will begin. If not, enter N(n) to exit. If no Y/N input is received within `30 seconds`, pm2 will remain stopped and the session will end.
 <img src="./img/backup3.png">
 
-#### 2-4  ファイル確認
-バックアップが成功すると、成功したという表示が出ます。そのまま`/plinode_backups`ディレクトリの中にあるバックアップしたファイルの一覧が表示されますので、バックアップファイルを確認することができます。
+#### 2-4  File check
+If the backup is successful, a message indicating success will be displayed. Then, you will be able to check the backed-up files by seeing the list of backed-up files in the /plinode_backups directory.
 <img src="./img/backup4.png">
 
 
 
 # Rstore of PM2 PROCESSes
 
-## 3． 復元の実行
+## 3． Perform the restoration
 ```shell
 ./pm2process_restore.sh
 ```
 
-* 実行すると、`/plinode_backups`にあるバックアップファイルの一覧を10件ずつ表示します。復元したい番号を選択します
+* Executing will show a list of backup files in /plinode_backups in increments of 10. Select the number of the file you want to restore.
 
-* 復元したいファイルが表示された一覧にない場合は、`n`を押して次のページに進んでください。復元したい`pm2process`ファイルが見つかったら、番号を入力します
+* If the desired file is not listed in the displayed list, press 'n' to go to the next page. When the desired 'pm2process' file is found, enter the number.
 
-* 一覧には`conf`ファイルと`db`ファイルも表示するようにしてありますが、選択できません。こちらのファイルを復元したい場合は、以下のサイト [GoPlugin 公式サイト](https://github.com/GoPlugin/plugin-deployment/blob/main/docs/node_backup_restore.md)を参照してください
+* The list will also display 'conf' and 'db' files, but they cannot be selected. If you want to restore these files, please refer to the following site [GoPlugin official site.](https://github.com/GoPlugin/plugin-deployment/blob/main/docs/node_backup_restore.md)
 
 
 
-* 番号を選択すると確認がありますので、実行する場合は`y`、中止する場合は`q`を入力してください。 `y`を入力すると、復元がはじまります。
+* After selecting the number, there will be a confirmation. If you wish to proceed, enter y, if you wish to cancel, enter q. Entering y will start the restore process.
 
-#### 3-1  一覧表示
-バックアップファイルの一覧を10件ずつ表示します。
+#### 3-1  List display
+The script will display a list of backup files 10 at a time.
 <img src="./img/restore1.png">
 
-#### 3-2  pm2プロセス停止
-復元がはじまると、まずpm2プロセスをすべて停止します。
+#### 3-2  pm2 process stop
+When the restoration begins, all pm2 processes are first stopped.
 <img src="./img/restore2.png">
 
-#### 3-3  復元開始
-バックアップファイルの復元を開始します。
+#### 3-3  Start of restoration
+Starts restoring the backup file.
 <img src="./img/restore3.png">
 
-復元するディレクトリとファイルは、以下の通りです。バックアップされたディレクトリとファイルのみが復元されます。
+Directories and files to be restored are as follows Only backed up directories and files will be restored.
 
 * data-feed-setup/
 * external-adapter-feeds/
 * external-adapter-template/
 * dump.pm2
 
-復元先は、以下の通りです。
+The restoration is to be performed at the following locations
 ```
     ~/plugin-deployment/
     │   ├── data-feed-setup/
@@ -120,11 +120,11 @@ chmod +x *.sh
 ```
 
 
-#### 3-4  pm2s再起動
-復元が完了すると、pm2サービスを再起動し、pm2プロセスを再起動します。
+#### 3-4  Restart pm2
+When the restore is complete, restart the pm2 service and restart the pm2 process.
 <img src="./img/restore4.png">
 
-最後にpm2プロセスの`↺`の数字が増えていないことを確認してください。
+Finally, make sure that the `↺` number in the pm2 process has not increased.
 
 # Author
 

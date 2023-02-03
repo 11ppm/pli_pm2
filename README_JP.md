@@ -31,7 +31,7 @@ cd ~/plugin-deployment && ./_plinode_setup_bkup.sh && ./_plinode_backup.sh -full
 
 # PM2プロセスのバックアップ
 
-## 1． githubからダウンロード
+## 1． GitHubからクローン
 
 ```sh
 cd $HOME

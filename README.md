@@ -6,8 +6,8 @@
 PluginNode内にある、以下のディレクトリとファイルをバックアップします。
 
 * external-adapter-template/
-* data-feed-setup
-* external-adapter-feeds
+* data-feed-setup/
+* external-adapter-feeds/
 * dump.pm2
 
 上記ディレクトリとファイルは、以下の場所にあるものとする。

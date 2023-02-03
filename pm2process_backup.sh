@@ -98,7 +98,7 @@ while true; do
         filename=${files[i]}
         color=""
         if [[ "$filename" =~ "conf" ]]; then
-            color=$RED
+            color=$BLUE
         elif [[ "$filename" =~ "db" ]]; then
             color=$BLUE
         elif [[ "$filename" =~ "pm2" ]]; then

@@ -128,6 +128,18 @@ chmod +x *.sh
 
 最後にpm2プロセスの`↺`の数字が増えていないことを確認してください。
 
+# リポジトリの更新
+
+リポジトリが更新されることがあります。その時は以下のコマンドを実行して更新してください。
+
+```
+cd ~/pli_pm2
+git fetch
+git reset --hard HEAD
+git merge '@{u}'
+chmod +x *.sh
+```
+
 # Author
 
 * @11ppm

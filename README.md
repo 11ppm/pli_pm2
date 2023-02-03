@@ -1,5 +1,8 @@
 # Backup and Restore PM2 PROCESSes
 
+ [README 日本語版](https://github.com/11ppm/pli_pm2/blob/main/README_JP.md)
+
+
 Back up the following directories and files within the PluginNode.
 
 * data-feed-setup/

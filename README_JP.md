@@ -1,5 +1,7 @@
 # PM2プロセスのバックアップと復元
 
+   [README English Version](https://github.com/11ppm/pli_pm2)
+
 PluginNode内にある、以下のディレクトリとファイルをバックアップします。
 
 * data-feed-setup/

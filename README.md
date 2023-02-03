@@ -104,8 +104,8 @@ chmod +x *.sh
 
 復元するディレクトリとファイルは、以下の通りです。バックアップされたディレクトリとファイルのみが復元されます。
 
-* data-feed-setup
-* external-adapter-feeds
+* data-feed-setup/
+* external-adapter-feeds/
 * external-adapter-template/
 * dump.pm2
 

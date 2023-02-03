@@ -27,9 +27,6 @@ host=$(hostname -f)
 # バックアップファイル名の指定
 BACKUP_PM2_PROCESS="${host}_$(date +%Y_%m_%d_%H_%M).pm2process.tar.gz"
 
-
-
-
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"
@@ -66,11 +63,11 @@ echo
 read -t30 -r -p "現在、pm2は停止しています。pm2を再起動しますか？ [Y/N]: " answer
 if [ $? -gt 128 ]; then
     echo
+    echo
     echo -e "${PURPLE}      30秒間応答がなかったため終了します${NC}"
     echo -e "${PURPLE}      現在、pm2は停止したまま状態です${NC}"
     echo
-fi
-if [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
+elif [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
     pm2 restart all
 elif [ "$answer" == "N" ] || [ "$answer" == "n" ]; then
     echo "再起動したい場合は、pm2 restart allを実行してください"
@@ -84,8 +81,8 @@ else
 fi
 
 # バックアップファイルの一覧表示と選択
-files=($(ls -t $backup_dir))  # バックアップファイル一覧再取得
-file_num=${#files[@]}         # バックアップファイル数再取得
+files=($(ls -t $backup_dir)) # バックアップファイル一覧再取得
+file_num=${#files[@]}        # バックアップファイル数再取得
 echo
 echo -e "${YELLOW}#########################################################################"
 echo -e "${YELLOW}"

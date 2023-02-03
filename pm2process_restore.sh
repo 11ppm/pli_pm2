@@ -119,8 +119,8 @@ while true; do
         echo
         echo -e "${YELLOW}#########################################################################"
         echo -e "${YELLOW}"
-        echo -e "${YELLOW}             PM2 process restoration complete."
-        echo -e "${YELLOW}             Next, restart the pm2 service." # restart pm2 service
+        echo -e "${YELLOW}                    PM2 process restoration complete."
+        echo -e "${YELLOW}                    Next, restart the pm2 service." # restart pm2 service
         echo -e "${YELLOW}"
         echo -e "${YELLOW}#########################################################################${NC}"
         echo

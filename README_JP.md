@@ -1,4 +1,4 @@
-# Backup and Restore PM2 PROCESSes
+# PM2プロセスのバックアップと復元
 
 PluginNode内にある、以下のディレクトリとファイルをバックアップします。
 
@@ -20,7 +20,7 @@ PluginNode内にある、以下のディレクトリとファイルをバック�
 
 ---
 
-**Backup of conf and db**
+**ConfファイルとDBファイルのバックアップ**
 
 `Conf files`と`Database files`は、先にバックアップをしておくことをお勧めします。
 ```sh
@@ -29,7 +29,7 @@ cd ~/plugin-deployment && ./_plinode_setup_bkup.sh && ./_plinode_backup.sh -full
 
 ---
 
-# Backup of PM2 PROCESSes
+# PM2プロセスのバックアップ
 
 ## 1． githubからダウンロード
 
@@ -73,7 +73,7 @@ chmod +x *.sh
 
 
 
-# Rstore of PM2 PROCESSes
+# PM2プロセスの復元
 
 ## 3． 復元の実行
 ```shell

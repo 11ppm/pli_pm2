@@ -76,7 +76,7 @@ If the backup is successful, a message indicating success will be displayed. The
 
 
 
-# Rstore of PM2 PROCESSes
+# Restore of PM2 PROCESSes
 
 ## 3． Perform the restoration
 ```shell

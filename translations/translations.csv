@@ -2,7 +2,7 @@ key|english|japanese
 BACKUP|Backup|バックアップ
 START_BACKUP_PM2|Starting the backup of pm2 process.|pm2プロセスのバックアップを開始します。
 STOP_PM2_FIRST|First, stopping the pm2 process.|最初に、pm2プロセスを停止します。
-START_BACKUP_PM2_AGAIN|Starting the backup of pm2 process.|pm2プロセスのバックアップを再開します。
+COMPRESS_AND_BACKUP|Compress and backup various files.|各種ファイルを圧縮しバックアップします。
 SUCCESSFUL_BACKUP|The pm2 process backup was successful.|pm2プロセスのバックアップが成功しました。
 PM2_STOPPED_RESTART|pm2 is currently stopped. Would you like to restart pm2 ?|pm2が現在停止しています。pm2を再起動しますか？
 NO_RESPONSE_SESSION_END|No response for 30 seconds, session will end.|30秒間応答がなかったため、セッションが終了します。
@@ -12,9 +12,8 @@ INVALID_INPUT|Invalid input.|無効な入力です。
 DISPLAY_BACKUP_CONTENTS|Displaying contents of backup file.|バックアップファイルの内容を表示しています。
 DISPLAY_BACKUP_FILE|Displaying backup file.|バックアップファイルを表示しています。
 ALL_BACKUP_FILES_DISPLAYED|All backup files have been displayed.|すべてのバックアップファイルが表示されました。
-PRESS_N_NOT_TEN_SHOWN|Press 'n' on the keyboard if there are not 10 shown.|10個表示されていない場合はキーボードで'n'を押してください。(qで終了)
+DISPLAY_NEXT_PAGE|Enter 'n' to display next page. (q to quit)|次のページを表示するには 'n' を入力してください。(終了するには'q' を入力)
 ENDING_SESSION|Ending session as is.|セッションを終了します。
-INVALID_INPUT_BESIDES_N_Q|Invalid input besides 'n' or 'q'.|'n'または'q'以外の無効な入力です。
 RESTORE|Restore|復元
 RESTORE_DISPLAY_LIST|Displaying list of backup files.|バックアップファイルのリストを表示しています。
 RESTORE_DISPLAY_NEXT_PAGE|Enter 'n' to display next page.|次のページを表示するには 'n' を入力してください。

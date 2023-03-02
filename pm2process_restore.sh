@@ -82,7 +82,7 @@ while true; do
         echo -e "$((i + 1)). $color${files[i]}$NC"
     done
 
-    # 表示リスト最終ページ
+    # 表示リスト最終ページ条件分岐
 
     if [ $end -eq $((file_num - 1)) ]; then
         echo
@@ -94,7 +94,7 @@ while true; do
         read -t30 -r -p "$RESTORE_ENTER_FILE_NUMBER : " input
     fi
 
-    # ちょっと切り離し
+    # $input入力条件分岐
 
     # $? は終了ステータス
     if [ $? -gt 128 ]; then
@@ -109,11 +109,7 @@ while true; do
         echo
         start=$((end + 1))
         continue
-    # else
-    #     echo "入力が無効です。再度入力してください。"
     fi
-
-
 
     # ↓選択したファイルの確認
 
